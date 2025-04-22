@@ -6,23 +6,11 @@ from sklearn.model_selection import RandomizedSearchCV
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-import platform
+from matplotlib import rc
 
-if platform.system() == "Darwin":  #
-    plt.rc("font", family="AppleGothic")
-else:
-    plt.rc("font", family="NanumGothic")
-
-fe = fm.FontEntry(
-    fname=r"C://Windows/Fonts/NanumGothic.ttf",  # ttf 파일이 저장되어 있는 경로
-    name="NanumGothic",
-)  # 원하는 폰트 설정
-fm.fontManager.ttflist.insert(0, fe)  # Matplotlib에 폰트 추가
-
-plt.rcParams.update({"font.size": 18, "font.family": "NanumGothic"})  # 폰트 설정
-
-plt.rcParams["axes.unicode_minus"] = False
+# 한글 폰트 설정
+rc('font', family='Malgun Gothic') # windows 기본 한글 폰트
+plt.rcParams['axes.unicode_minus']=False # 마이너스 기초 깨짐 방지지
 
 st.markdown("## XGBoost Example")
 df = pd.read_csv("input.csv")
